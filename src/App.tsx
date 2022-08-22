@@ -1,6 +1,6 @@
 import React from 'react';
-import { CardsList } from './components/CardsList/CardsList';
-import { InfoBar } from './components/InfoBar/InfoBar';
+import { CardsList } from './components/CardsList';
+import { InfoBar } from './components/InfoBar';
 
 function App() {
   return (

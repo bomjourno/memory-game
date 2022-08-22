@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import timeReducer from './reducers/timeSlice';
+import gameReducer from './reducers/gameSlice';
 
 const rootReducer = combineReducers({
-  timeReducer,
+  gameReducer,
 });
 
 export const setupStore = () => {
