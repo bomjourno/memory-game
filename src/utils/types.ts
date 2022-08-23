@@ -3,4 +3,5 @@ export interface ICards {
   alt: string;
   src: string;
   front: boolean;
+  canChoose: boolean;
 }

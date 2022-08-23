@@ -23,14 +23,26 @@ export const gameSlice = createSlice({
       shuffle(state.initialData);
       state.initialData.forEach((card) => {
         card.front = false;
+        card.canChoose = true;
       });
     },
     setGameProcess(state, action) {
       state.gameInProcess = action.payload;
     },
+    closeFoundedCards(state, action) {
+      state.initialData.forEach((card) => {
+        if (card.alt === action.payload) {
+          card.canChoose = false;
+        }
+      });
+    },
+    setIsGameWon(state, action) {
+      state.isGameWon = action.payload;
+    },
   },
 });
 
-export const { showCard, shuffleCards, setGameProcess } = gameSlice.actions;
+export const { showCard, shuffleCards, setGameProcess, closeFoundedCards, setIsGameWon } =
+  gameSlice.actions;
 
 export default gameSlice.reducer;
