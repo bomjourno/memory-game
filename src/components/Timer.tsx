@@ -2,13 +2,13 @@ import React from 'react';
 import { Button, Container, Stack, Typography } from '@mui/material';
 import { useStopwatch } from '../hooks/useStopwatch';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { setGameProcess, shuffleCards } from '../store/reducers/gameSlice';
+import { setGameProcess, setIsGameWon, shuffleCards } from '../store/reducers/gameSlice';
 import { ScoreBoard } from './ScoreBoard';
 import { useEffect } from 'react';
 
 export const Timer = () => {
   const [time, handleChangeTime] = useStopwatch();
-  const { isGameWon } = useAppSelector((state) => state.gameReducer);
+  const { isGameWon, gameInProcess } = useAppSelector((state) => state.gameReducer);
   const dispatch = useAppDispatch();
 
   const handleStartClick = () => {
@@ -25,6 +25,7 @@ export const Timer = () => {
     handleChangeTime('stop');
     dispatch(shuffleCards());
     dispatch(setGameProcess(false));
+    dispatch(setIsGameWon(false));
   };
 
   const hours: string = ('0' + (Math.floor(time / 3600) % 60)).slice(-2);
@@ -33,7 +34,7 @@ export const Timer = () => {
 
   useEffect(() => {
     if (isGameWon) {
-      handleStopClick();
+      handlePauseClick();
     }
   }, [isGameWon]);
 
@@ -63,16 +64,31 @@ export const Timer = () => {
         {hours}:{minutes}:{seconds}
       </Typography>
       <Stack direction='row' spacing={1}>
-        <Button onClick={handleStartClick} variant='outlined' color='inherit'>
+        <Button
+          onClick={handleStartClick}
+          variant='outlined'
+          color='inherit'
+          disabled={isGameWon || gameInProcess}
+        >
           Start
         </Button>
-        <Button onClick={handlePauseClick} variant='outlined' color='inherit'>
+        <Button
+          onClick={handlePauseClick}
+          variant='outlined'
+          color='inherit'
+          disabled={isGameWon || !gameInProcess}
+        >
           Pause
         </Button>
-        <Button onClick={handleStopClick} variant='outlined' color='inherit'>
+        <Button
+          onClick={handleStopClick}
+          variant='outlined'
+          color='inherit'
+          disabled={isGameWon || !gameInProcess}
+        >
           Stop
         </Button>
-        <ScoreBoard time={time} isGameWon={isGameWon} />
+        <ScoreBoard handleStopClick={handleStopClick} time={time} isGameWon={isGameWon} />
       </Stack>
     </Container>
   );
