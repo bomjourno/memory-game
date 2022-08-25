@@ -41,25 +41,41 @@ export const Timer = () => {
   return (
     <Container
       maxWidth='sm'
-      sx={{
-        display: 'flex',
-        flexDirection: 'row-reverse',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: '10px',
-        mt: '20px',
-      }}
+      sx={[
+        {
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '10px',
+          mt: '20px',
+        },
+        (theme) => ({
+          flexDirection: 'column-reverse',
+          rowGap: 2,
+          [theme.breakpoints.up(638)]: {
+            flexDirection: 'row-reverse',
+          },
+        }),
+      ]}
     >
       <Typography
         variant='h5'
         color='#000'
-        sx={{
-          fontWeight: 200,
-          letterSpacing: 2,
-          p: '1px 6px',
-          border: '1px solid #000',
-          borderRadius: '4px',
-        }}
+        sx={[
+          {
+            fontWeight: 200,
+            letterSpacing: 2,
+            p: '1px 6px',
+            border: '1px solid #000',
+            borderRadius: '4px',
+          },
+          (theme) => ({
+            fontSize: '20px',
+            [theme.breakpoints.up(440)]: {
+              fontSize: '24px',
+            },
+          }),
+        ]}
       >
         {hours}:{minutes}:{seconds}
       </Typography>
@@ -69,6 +85,12 @@ export const Timer = () => {
           variant='outlined'
           color='inherit'
           disabled={isGameWon || gameInProcess}
+          sx={(theme) => ({
+            fontSize: '12px',
+            [theme.breakpoints.up(440)]: {
+              fontSize: '14px',
+            },
+          })}
         >
           Start
         </Button>
@@ -77,6 +99,12 @@ export const Timer = () => {
           variant='outlined'
           color='inherit'
           disabled={isGameWon || !gameInProcess}
+          sx={(theme) => ({
+            fontSize: '12px',
+            [theme.breakpoints.up(440)]: {
+              fontSize: '14px',
+            },
+          })}
         >
           Pause
         </Button>
@@ -85,6 +113,12 @@ export const Timer = () => {
           variant='outlined'
           color='inherit'
           disabled={isGameWon || !gameInProcess}
+          sx={(theme) => ({
+            fontSize: '12px',
+            [theme.breakpoints.up(440)]: {
+              fontSize: '14px',
+            },
+          })}
         >
           Stop
         </Button>

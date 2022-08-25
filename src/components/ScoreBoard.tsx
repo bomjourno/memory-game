@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Input, Modal, TextField, Typography } from '@mui/material';
+import { Box, Button, Input, Modal, TextField, Theme, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { Leaders } from './Leaders';
 import { useFormWithValidation } from '../hooks/useFormValidation';
@@ -19,18 +19,25 @@ export const ScoreBoard = ({ isGameWon, time, handleStopClick }: IScoreBoard) =>
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: 0,
-    borderRadius: '10px',
-    boxShadow: 24,
-    p: 4,
-  };
+  const style = [
+    {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      bgcolor: 'background.paper',
+      border: 0,
+      borderRadius: '10px',
+      boxShadow: 24,
+      p: 4,
+    },
+    (theme: Theme) => ({
+      width: 290,
+      [theme.breakpoints.up(500)]: {
+        width: 400,
+      },
+    }),
+  ];
 
   useEffect(() => {
     if (isGameWon) {
@@ -52,7 +59,17 @@ export const ScoreBoard = ({ isGameWon, time, handleStopClick }: IScoreBoard) =>
 
   return (
     <>
-      <Button variant='outlined' color='inherit' onClick={handleOpen}>
+      <Button
+        variant='outlined'
+        color='inherit'
+        onClick={handleOpen}
+        sx={(theme) => ({
+          fontSize: '12px',
+          [theme.breakpoints.up(440)]: {
+            fontSize: '14px',
+          },
+        })}
+      >
         Scoreboard
       </Button>
       <Modal

@@ -48,18 +48,34 @@ export const CardsList = () => {
     <Container maxWidth='sm'>
       <Grid
         container
-        sx={{ mt: 1, mb: 2 }}
-        rowSpacing={4}
-        columnSpacing={6}
+        sx={[
+          { mt: 2, mb: 2 },
+          (theme) => ({
+            rowGap: 4,
+            columnGap: 2,
+            [theme.breakpoints.up(500)]: {
+              rowGap: 4,
+              columnGap: 4,
+            },
+          }),
+        ]}
         justifyContent='center'
       >
         {initialData.map((card) => (
           <Grid item key={card.id}>
             <Card
-              sx={{
-                width: 100,
-                height: 110,
-              }}
+              sx={(theme) => ({
+                width: 65,
+                height: 80,
+                [theme.breakpoints.up(435)]: {
+                  width: 80,
+                  height: 90,
+                },
+                [theme.breakpoints.up(575)]: {
+                  width: 100,
+                  height: 110,
+                },
+              })}
             >
               <CardActionArea
                 sx={{
