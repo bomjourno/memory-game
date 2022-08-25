@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/memory-game/static/js/main.436d18e3.js",
+    "static/media/wolverine.png": "/memory-game/static/media/wolverine.a5690aa0b3659549ffd0.png",
+    "static/media/pantera.png": "/memory-game/static/media/pantera.7f0fb44d9eb1465898ba.png",
+    "static/media/spider-man.png": "/memory-game/static/media/spider-man.ce3d8f2983f5a33abcdb.png",
+    "static/media/deadpool.png": "/memory-game/static/media/deadpool.b92cbad750b1cceea8a2.png",
+    "static/media/ant-man.png": "/memory-game/static/media/ant-man.5b3e0f6020cafd0d9a30.png",
+    "static/media/groot.png": "/memory-game/static/media/groot.9c46b404cf6985828c19.png",
+    "static/media/iron-man.png": "/memory-game/static/media/iron-man.98de00a04cf58124ef9f.png",
+    "static/media/batman.png": "/memory-game/static/media/batman.20ac3f0de42e9e7b86b7.png",
+    "index.html": "/memory-game/index.html",
+    "main.436d18e3.js.map": "/memory-game/static/js/main.436d18e3.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.436d18e3.js"
+  ]
+}
